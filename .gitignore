@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+
+# Output files
+output/maps/
+output/plots/
+output/*.csv
+# Optional (if large data)
+data/
