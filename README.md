@@ -21,7 +21,16 @@ This project analyzes **land deformation over time** using monthly satellite `.t
 land_deformation_project/
 ├── data/           # Input TIFF images
 ├── output/         # Maps & results
-├── src/            # Source code
+        ├──maps/
+        ├──plots/   
+        ├──results.csv    
+├── src/   
+        ├──load_data.py     # Source code
+        ├──preprocess.py
+        ├──analysis.py
+        ├──prediction.py
+        ├──main.py  
+├──requirements.txt    
 └── README.md
 ```
 

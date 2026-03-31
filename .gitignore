@@ -1,9 +1,26 @@
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
 
 # Output files
-output/maps/
-output/plots/
-output/*.csv
-# Optional (if large data)
+output/
+*.csv
+
+# Data (large files - optional)
 data/
+
+# OS files
+.DS_Store
+Thumbs.db

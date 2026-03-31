@@ -16,12 +16,16 @@ def predict_future_risk(mean_vals):
 def calculate_risk(predictions):
     risk_levels = []
 
+    mean = np.mean(predictions)
+    std = np.std(predictions)
+
     for val in predictions:
-        if val > 0.7:
+        if val > mean + std:
             risk_levels.append("HIGH")
-        elif val > 0.4:
+        elif val > mean:
             risk_levels.append("MEDIUM")
         else:
             risk_levels.append("LOW")
 
     return risk_levels
+
