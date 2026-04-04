@@ -1,15 +1,23 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 
 def predict_future_risk(mean_vals):
     X = np.arange(len(mean_vals)).reshape(-1, 1)
     y = np.array(mean_vals)
 
-    model = LinearRegression()
-    model.fit(X, y)
+    # Polynomial transformation (degree = 2)
+    poly = PolynomialFeatures(degree=2)
+    X_poly = poly.fit_transform(X)
 
+    model = LinearRegression()
+    model.fit(X_poly, y)
+
+    # Future months
     future_months = np.arange(len(mean_vals), len(mean_vals)+6).reshape(-1, 1)
-    predictions = model.predict(future_months)
+    future_poly = poly.transform(future_months)
+
+    predictions = model.predict(future_poly)
 
     return predictions
 
