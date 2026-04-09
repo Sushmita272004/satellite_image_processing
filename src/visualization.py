@@ -2,34 +2,27 @@ import matplotlib.pyplot as plt
 import os
 
 def plot_time_series(mean_vals, output_path):
-
     os.makedirs(output_path, exist_ok=True)
 
     plt.figure()
 
-    # Plot deformation trend
     plt.plot(mean_vals, marker='o', label='Mean Deformation')
 
-    # ✅ Month labels (IMPORTANT)
-    months = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+    # ✅ Interval labels
+    months = ['Mar-Apr', 'Apr-May', 'May-Jun', 'Jun-Jul', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct']
     plt.xticks(range(len(mean_vals)), months[:len(mean_vals)])
 
-    # Labels and title
     plt.title("Deformation Trend Over Time")
-    plt.xlabel("Months")
+    plt.xlabel("Time Intervals")
     plt.ylabel("Mean Deformation")
 
-    # Grid and legend
     plt.grid()
     plt.legend()
-
-    # Improve layout
     plt.tight_layout()
 
     plt.savefig(f"{output_path}/time_series.png")
     plt.close()
 
-# 📈 Deformation + Variability graph
 def plot_deformation_and_variability(mean_vals, std_vals, output_path):
     os.makedirs(output_path, exist_ok=True)
 
@@ -38,35 +31,42 @@ def plot_deformation_and_variability(mean_vals, std_vals, output_path):
     plt.plot(mean_vals, marker='o', label='Mean Deformation')
     plt.plot(std_vals, marker='s', linestyle='--', label='Variability (Std Dev)')
 
+    months = ['Mar-Apr', 'Apr-May', 'May-Jun', 'Jun-Jul', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct']
+    plt.xticks(range(len(mean_vals)), months[:len(mean_vals)])
+
     plt.title("Deformation and Variability Over Time")
-    plt.xlabel("Time (Months)")
+    plt.xlabel("Time Intervals")
     plt.ylabel("Value")
+
     plt.legend()
     plt.grid()
-
     plt.tight_layout()
+
     plt.savefig(f"{output_path}/deformation_variability.png")
     plt.close()
 
 
-# 🌍 Affected Area graph
 def plot_affected_area(affected_area, output_path):
     os.makedirs(output_path, exist_ok=True)
 
     plt.figure()
 
     plt.plot(affected_area, marker='o')
-    plt.title("Affected Area Percentage Over Time")
-    plt.xlabel("Time (Months)")
-    plt.ylabel("Affected Area (%)")
-    plt.grid()
 
+    months = ['Mar-Apr', 'Apr-May', 'May-Jun', 'Jun-Jul', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct']
+    plt.xticks(range(len(affected_area)), months[:len(affected_area)])
+
+    plt.title("Affected Area Percentage Over Time")
+    plt.xlabel("Time Intervals")
+    plt.ylabel("Affected Area (%)")
+
+    plt.grid()
     plt.tight_layout()
+
     plt.savefig(f"{output_path}/affected_area.png")
     plt.close()
 
 
-# ⬆️⬇️ Uplift vs Subsidence graph
 def plot_uplift_subsidence(uplift, subsidence, output_path):
     os.makedirs(output_path, exist_ok=True)
 
@@ -75,13 +75,17 @@ def plot_uplift_subsidence(uplift, subsidence, output_path):
     plt.plot(uplift, marker='o', label='Uplift (%)')
     plt.plot(subsidence, marker='s', label='Subsidence (%)')
 
+    months = ['Mar-Apr', 'Apr-May', 'May-Jun', 'Jun-Jul', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct']
+    plt.xticks(range(len(uplift)), months[:len(uplift)])
+
     plt.title("Uplift vs Subsidence Over Time")
-    plt.xlabel("Time (Months)")
+    plt.xlabel("Time Intervals")
     plt.ylabel("Percentage (%)")
+
     plt.legend()
     plt.grid()
-
     plt.tight_layout()
+
     plt.savefig(f"{output_path}/uplift_subsidence.png")
     plt.close()
 
@@ -99,7 +103,7 @@ def plot_future_prediction(mean_vals, future_predictions, output_path):
     plt.plot(x_future, future_predictions, marker='x', linestyle='--', label='Predicted')
 
     # Month labels
-    months = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+    months = ['Mar-Apr', 'Apr-May', 'May-Jun', 'Jun-Jul', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct']
     future_labels = [f'+{i+1}' for i in range(len(future_predictions))]
     all_labels = months + future_labels
 
